@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前五个数据</title>
+</head>
+<body>
+
+前五个数据 555
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/视图功能/html/前五跳转_选项模型/{{ question.id }}">  完整路径:  {{ question.question_text }}</a></li>
+
+        <li><a href="{% url '前五跳转_选项模型' question.id %}">  name跳转形式 : {{ question.question_text }}</a></li>
+
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+</body>
+</html>

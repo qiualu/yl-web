@@ -1,0 +1,57 @@
+# 定义服务
+services:
+  django-gather:  # 服务名称
+    build:  # 构建配置
+      context: .  # 指定构建上下文为当前目录（即 docker-compose.yml 文件所在的目录）
+      dockerfile: ./DjangoGather/Dockerfile  # 指定 Dockerfile 的位置
+      #context: /www/wwwroot/yl-web/DjangoGather  # Dockerfile 所在的目录
+      #dockerfile: Dockerfile  # Dockerfile 的名称（如果它不是默认名称 Dockerfile，则需要指定）
+    #command: ["daphne", "-b", "0.0.0.0", "-p", "8000", "基础项目.asgi:application"]
+
+
+    # image: django-gather:latest  # 使用自定义构建的 Django 镜像
+
+    container_name: yl-web  # 指定容器的名称
+    environment:  # 设置环境变量
+      TZ: Asia/Shanghai  # 设置时区变量为亚洲/上海
+    ports:  # 端口映射
+      - 9010:9010  # 将容器的9000端口映射到宿主机的9000端口
+      - 8000:8000 
+      - 8001:8001  
+      - 8002:8002
+      - 8003:8003 
+    expose:  # 声明容器监听的端口（不映射到宿主机，通常用于容器间通信）
+      - 9010
+      - 8000
+      - 8001
+      - 8002
+      - 8003
+    restart: always  # 设置容器的重启策略为总是重启
+    volumes:  # 数据卷配置
+      - "/www/wwwroot/yl-web/DjangoGather:/DjangoGather"  # 将宿主机的 ./TestPY3 目录挂载到容器的 /code 目录
+
+      # - "./DjangoGather:/DjangoGather"  # 将宿主机的 ./TestPY3 目录挂载到容器的 /code 目录
+
+
+
+    working_dir: /DjangoGather/DjangoDemo/基础项目  # 设置容器内的工作目录为 /code
+    tty: true  # 分配一个伪终端
+    stdin_open: true  # 保持标准输入开启
+
+    # 网络配置
+    networks:
+      network:  # 指定容器连接的网络
+        ipv4_address: 166.10.0.15  # 为容器分配一个静态 IP 地址
+
+# 定义网络
+networks:
+    network:  # 网络的名称
+        ipam:  # IP 地址管理配置
+            driver: default  # 使用 Docker 的默认 IPAM 驱动
+            config:  # IPAM 配置列表
+                - subnet: '166.10.0.0/16'  # 定义一个子网，子网地址为 166.10.0.0，子网掩码为 /16
+                  # 前16位是网络地址，可分配地址范围从 166.10.0.1 到 166.10.255.254
+
+
+
+                     

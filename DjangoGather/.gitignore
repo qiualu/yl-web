@@ -1,0 +1,18 @@
+# Python 编译生成的 __pycache__ 目录  
+__pycache__/  
+.idea/  
+ 
+# 临时文件  
+*.py[cod]  
+*.so  
+*.sqlite3
+# 日志文件  
+*.log  
+ 
+# 虚拟环境目录  
+venv/  
+myenv/
+DockerFile/
+
+
+
