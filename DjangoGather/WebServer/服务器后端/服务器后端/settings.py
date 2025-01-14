@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    '福平台.system',
+    '福平台.demo',
+    '福平台.generator',
+
 ]
 
 MIDDLEWARE = [
@@ -131,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 from .log_utils import UnicodeURLFormatter
 # 创建日志文件夹路径
-LOG_DIR = os.path.join(BASE_DIR, '其他文件/日志文件')
+LOG_DIR = os.path.join(BASE_DIR, '公共文件/日志文件')
 # 确保日志文件夹存在，如果不存在则创建
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)

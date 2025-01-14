@@ -8,9 +8,17 @@ from urllib.parse import unquote
 import urllib.parse
 
 
+# yl
+from 福平台.公共类.账户认证 import 账户认证,账户认证5512
+# 福平台\公共类
+
 def 路由功能(request):
-    # return HttpResponse("路由功能 默认页.")
-    return render(request, 'home.html')
+    
+    print("路由功能 : ", request)
+    账户认证()
+
+    return HttpResponse("路由功能 默认页.")
+    # return render(request, 'home.html')
 
 
 def 单个匹配(request):
