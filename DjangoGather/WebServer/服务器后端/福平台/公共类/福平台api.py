@@ -15,7 +15,10 @@ def add(request, a: int, b: int):
 
 
 
+from 福平台.demo.router import demo_router
 
+# api//hello
 
+福平台api.add_router('/demo/', demo_router)
 
-
+# C:\Users\yl\Desktop\DockerProject\yl-web\DjangoGather\WebServer\服务器后端\福平台\demo\router.py

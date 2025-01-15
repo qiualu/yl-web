@@ -10,7 +10,7 @@ git status
 * 将文件的变化添加到暂存区
 * <file> 表示单个文件，使用 . 表示所有修改过的文件
 git add <file>
-git add .
+git add *
 * 提交暂存区的改动到本地仓库，并附上提交信息
 git commit -m '提交信息'
 * 将本地的改动推送到远程仓库的指定分支
@@ -54,3 +54,10 @@ git config --global user.email 'your-email@example.com'
 
 使用 git checkout <commit-hash> -- <file> 来检出该文件在特定提交中的版本。
 git checkout main .gitignore 
+
+CRLF 转换为 LF 在提交到仓库时，但检出时不会转换。false 则完全不做转换
+git config --global core.autocrlf input
+# 或者
+git config --global core.autocrlf false
+
+
