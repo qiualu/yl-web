@@ -19,7 +19,7 @@ from django.urls import path,include
 
 
 from 福平台.公共类.福平台api import 福平台api
-from 案例模板.路由案例.ninjaAPI案例.Helloworld import HelloWorld
+# from 案例模板.路由案例.ninjaAPI案例.Helloworld import HelloWorld
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +27,7 @@ urlpatterns = [
 
 
     # 路由跳转 文件
-    path('案例模板/', include('案例模板.公共类.案例模板路由分配')), 
+    # path('案例模板/', include('案例模板.公共类.案例模板路由分配')), 
     path('api/', 福平台api.urls),
 
     # path('HelloWorld/', HelloWorld.urls),

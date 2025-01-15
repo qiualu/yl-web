@@ -7,7 +7,7 @@
 
 from ninja import NinjaAPI
 
-HelloWorld = NinjaAPI()
+HelloWorld = NinjaAPI(version='2.0.0')
 
 
 

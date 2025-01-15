@@ -9,8 +9,8 @@ demo_router = Router()
 
 # http://127.0.0.1:8000/api/demo/123
 @demo_router.get("/")
-def get_item(request, item_id: int):
-    return {"hello demo_router"}
+def get_item(request):
+    return {"message": "demo_router"}  
 
 
 demo_router.add_router('/', router, tags=["Demo"])
