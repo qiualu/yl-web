@@ -17,9 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+
+from 福平台.公共类.api入口 import 福平台api
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('demo/', include('福平台.demo.urls')),
 
+
+
+    path('api/', 福平台api.urls),
     path('', include('福平台.demo.urls')),
+
 ]
+ 

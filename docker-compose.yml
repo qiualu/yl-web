@@ -6,8 +6,6 @@ services:
       dockerfile: ./DjangoGather/Dockerfile  # 指定 Dockerfile 的位置
       #context: /www/wwwroot/yl-web/DjangoGather  # Dockerfile 所在的目录
       #dockerfile: Dockerfile  # Dockerfile 的名称（如果它不是默认名称 Dockerfile，则需要指定）
-    # command: ["daphne", "-b", "0.0.0.0", "-p", "8002", "基础项目.asgi:application"]
-    command: ["daphne", "-b", "0.0.0.0", "-p", "8002", "多应用汇集.asgi:application"]
 
 
     # image: django-gather:latest  # 使用自定义构建的 Django 镜像
@@ -36,9 +34,15 @@ services:
       # 本机路径配置
       - "./DjangoGather:/DjangoGather"  # 将宿主机的 ./TestPY3 目录挂载到容器的 /code 目录
 
- 
+    # command: ["daphne", "-b", "0.0.0.0", "-p", "8002", "基础项目.asgi:application"]
     # working_dir: /DjangoGather/DjangoDemo/基础项目  # 设置容器内的工作目录  
-    working_dir: /DjangoGather/DjangoDemo/多应用汇集  # 设置容器内的工作目录   
+    
+    # command: ["daphne", "-b", "0.0.0.0", "-p", "8002", "多应用汇集.asgi:application"]
+    # working_dir: /DjangoGather/DjangoDemo/多应用汇集  # 设置容器内的工作目录
+
+    command: ["daphne", "-b", "0.0.0.0", "-p", "8002", "服务器后端.asgi:application"]
+    working_dir: /DjangoGather/WebServer/服务器后端  # 设置容器内的工作目录 
+
     tty: true  # 分配一个伪终端
     stdin_open: true  # 保持标准输入开启
 
