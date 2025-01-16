@@ -9,7 +9,7 @@ from 福平台.公共类 import 模块参数配置 as settings
 # from 福平台.system.models import Users
 
 from django.contrib.auth import get_user_model
-User = get_user_model() 
+
 
 class CoreModel(models.Model):
     """
@@ -31,7 +31,7 @@ class CoreModel(models.Model):
 
     # creator = models.ForeignKey(to=settings.AUTH_USER_MODEL, related_query_name='creator_query', null=True,
     #                             verbose_name='创建人', help_text="创建人", on_delete=models.SET_NULL, db_constraint=False)
-    
+    User = get_user_model() 
     # Your fields here
     creator = models.ForeignKey(User, related_query_name='creator_query', null=True,
                                 verbose_name='创建人', help_text="创建人", on_delete=models.SET_NULL, db_constraint=False)
@@ -65,8 +65,7 @@ class CoreModel(models.Model):
         verbose_name = '核心模型'
         verbose_name_plural = verbose_name
 
-
-
+ 
 
 def get_all_models_objects(model_name=None):
     """

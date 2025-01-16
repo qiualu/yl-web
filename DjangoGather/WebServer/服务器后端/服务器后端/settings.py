@@ -118,6 +118,13 @@ USE_I18N = True
 # 是否使用时区
 USE_TZ = True
 
+# # 变量设置 
+# AUTH_USER_MODEL = '福平台.system.Users'
+# USERNAME_FIELD = 'username'
+# ALL_MODELS_OBJECTS = []  # 所有app models 对象
+
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

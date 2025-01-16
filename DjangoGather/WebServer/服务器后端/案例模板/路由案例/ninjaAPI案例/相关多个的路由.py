@@ -20,6 +20,7 @@ def get_item(request, item_id: int):
 @item_router.post("/")
 def create_item(request, item: Item):
     # 假设我们保存了项目数据
+    # print(" item_router.post: ", item) item_router.post:  id=42 name='YL Item Name'
     item.id += 100 
     return item
 

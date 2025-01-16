@@ -27,7 +27,7 @@ urlpatterns = [
 
 
     # 路由跳转 文件
-    # path('案例模板/', include('案例模板.公共类.案例模板路由分配')), 
+    path('案例模板/', include('案例模板.公共类.案例模板路由分配')), 
     path('api/', 福平台api.urls),
 
     # path('HelloWorld/', HelloWorld.urls),
