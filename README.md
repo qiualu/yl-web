@@ -61,3 +61,33 @@ git config --global core.autocrlf input
 git config --global core.autocrlf false
 
 
+
+# 更改到 Gitee 
+
+简易的命令行入门教程:
+<!-- Git 全局设置: -->
+
+git config --global user.name "美哉"
+git config --global user.email "494436488@qq.com"
+<!-- 创建 git 仓库: -->
+
+mkdir xxx
+cd xxx
+git init 
+touch README.md
+git add README.md
+git commit -m "first commit"
+git remote add origin https://gitee.com/meizai55/yl-web.git
+git push -u origin "master"
+<!-- 已有仓库? -->
+
+cd existing_git_repo
+git remote add origin https://gitee.com/meizai55/yl-web.git
+git push -u origin "master"
+
+
+删除现有的 origin 远程仓库：
+bash
+git remote remove origin
+
+
