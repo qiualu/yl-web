@@ -21,14 +21,14 @@ from 福平台.demo.router import demo_router
 from 福平台.system.router import system_router
 
  
-# 统一处理server异常
-@福平台api.exception_handler(Exception)
-def a(request, exc):
-    # print(" 福平台 : 异常情况 ",request,exc)
-    if hasattr(exc, 'errno'):
-        return 福平台api.create_response(request, data=[], msg=str(exc), code=exc.errno)
-    else:
-        return 福平台api.create_response(request, data=[], msg=str(exc), code=500)
+# # 统一处理server异常
+# @福平台api.exception_handler(Exception)
+# def a(request, exc):
+#     # print(" 福平台 : 异常情况 ",request,exc)
+#     if hasattr(exc, 'errno'):
+#         return 福平台api.create_response(request, data=[], msg=str(exc), code=exc.errno)
+#     else:
+#         return 福平台api.create_response(request, data=[], msg=str(exc), code=500)
 
 
 

@@ -42,22 +42,29 @@ INSTALLED_APPS = [
     # '福解析.demo.apps.DemoConfig',
     # '福解析.generator.apps.GeneratorConfig', 
 
-    # '福解析.system',
+    # '福解析.system', 
     # '福解析.demo',
     # '福解析.generator', 
     # '福解析.福main', 
-    
 
-] + [
-    f'福解析.{app_name}'
-    for app_name in os.listdir(BASE_DIR / '福解析')
-    if os.path.isdir(BASE_DIR / '福解析' / app_name) and os.path.exists(BASE_DIR / '福解析' / app_name / '__init__.py')
-] + [
-    f'数据库.{app_name}'
-    for app_name in os.listdir(BASE_DIR / '数据库')
-    if os.path.isdir(BASE_DIR / '数据库' / app_name) and os.path.exists(BASE_DIR / '数据库' / app_name / '__init__.py')
-]
+    # 'fupingtai.system', 
+    'fupingtai.system.apps.SystemConfig',
 
+] 
+# + [
+#     f'福解析.{app_name}'
+#     for app_name in os.listdir(BASE_DIR / '福解析')
+#     if os.path.isdir(BASE_DIR / '福解析' / app_name) and os.path.exists(BASE_DIR / '福解析' / app_name / '__init__.py')
+# ] + [
+#     f'数据库.{app_name}'
+#     for app_name in os.listdir(BASE_DIR / '数据库')
+#     if os.path.isdir(BASE_DIR / '数据库' / app_name) and os.path.exists(BASE_DIR / '数据库' / app_name / '__init__.py')
+# ]
+
+ # 多应用汇集\fupingtai
+AUTH_USER_MODEL = 'system.Users'
+USERNAME_FIELD = 'username'
+ALL_MODELS_OBJECTS = []  # 所有app models 对象
  
 
 MIDDLEWARE = [
@@ -226,6 +233,9 @@ LOGGING = {
 
 
 
+# token 有效时间 时 分 秒
+TOKEN_LIFETIME = 12 * 60 * 60
+# TOKEN_LIFETIME = 50
 
 
 

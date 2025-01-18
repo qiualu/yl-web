@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -119,9 +119,9 @@ USE_I18N = True
 USE_TZ = True
 
 # # 变量设置 
-# AUTH_USER_MODEL = '福平台.system.Users'
-# USERNAME_FIELD = 'username'
-# ALL_MODELS_OBJECTS = []  # 所有app models 对象
+AUTH_USER_MODEL = '福平台.system.Users'
+USERNAME_FIELD = 'username'
+ALL_MODELS_OBJECTS = []  # 所有app models 对象
 
 
 

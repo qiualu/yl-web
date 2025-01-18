@@ -73,6 +73,29 @@ def 正则匹配后续所有(request):
     return HttpResponse(f"re_path 正则匹配后续所有/.*$ {decoded_name}")
 
 def all(request):
+    # print("进入通用 匹配 _ all _",request)
+
+    print("进入通用匹配 _ all _")
+    print("请求方法:", request.method)
+    print("请求内容类型:", request.content_type)
+    print("请求体:", request.body)
+    print("请求查询字符串:", request.GET)
+    print("请求 POST 数据:", request.POST)
+    print("请求 cookies:", request.COOKIES)
+    print("请求 META 信息:", request.META)
+    print("请求 FILES:", request.FILES)
+    print("请求 path:", request.path)
+    print("请求 scheme:", request.scheme)
+    print("请求 host:", request.get_host())
+    print("请求 full path:", request.get_full_path())
+    
+    # 打印所有 headers
+    print("请求 headers:")
+    for header, value in request.headers.items():
+        print(f"{header}: {value}")
+    
+
+
     return HttpResponse("re_path 路由功能 无匹配,进入匹配所有")
 
 
