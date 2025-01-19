@@ -34,6 +34,7 @@ services:
       # 本机路径配置
       - "./DjangoGather:/DjangoGather"  # 将宿主机的 ./TestPY3 目录挂载到容器的 /code 目录
 
+
     # command: ["daphne", "-b", "0.0.0.0", "-p", "8002", "基础项目.asgi:application"]
     # working_dir: /DjangoGather/DjangoDemo/基础项目  # 设置容器内的工作目录  
     

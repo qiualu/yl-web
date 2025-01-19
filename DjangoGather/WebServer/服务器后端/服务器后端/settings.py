@@ -10,11 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+ 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -25,12 +27,11 @@ SECRET_KEY = 'django-insecure-vf#&mc4qphp#*d8^*lze892+pkw&lt40v*e*^80u(hm+elk!&4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
-# Application definition
-
-INSTALLED_APPS = [
+ 
+INSTALLED_APPS = [ 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,11 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    '福平台.system',
-    '福平台.demo',
-    '福平台.generator',
-
+    "案例模板.模型案例.福案例用户"
 ]
+
+
+# # 变量设置 
+# # AUTH_USER_MODEL = '福平台.system.Users'
+# AUTH_USER_MODEL = 'system.Users'
+# USERNAME_FIELD = 'username'
+# ALL_MODELS_OBJECTS = []  # 所有app models 对象
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -117,11 +125,6 @@ TIME_ZONE = "Asia/Shanghai"
 USE_I18N = True
 # 是否使用时区
 USE_TZ = True
-
-# # 变量设置 
-AUTH_USER_MODEL = '福平台.system.Users'
-USERNAME_FIELD = 'username'
-ALL_MODELS_OBJECTS = []  # 所有app models 对象
 
 
 

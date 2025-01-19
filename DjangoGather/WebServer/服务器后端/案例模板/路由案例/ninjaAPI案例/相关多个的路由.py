@@ -8,7 +8,7 @@ class Item(Schema):
     class Meta:
         pass  # 这里可以添加配置，如果没有特定配置，则保持为空
  
-相关多个的路由 = NinjaAPI(version='2.0.0')
+相关多个的路由 = NinjaAPI()
 
 # 定义一个子路由
 item_router = Router()

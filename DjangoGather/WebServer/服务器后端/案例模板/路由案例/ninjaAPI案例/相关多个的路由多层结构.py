@@ -1,7 +1,7 @@
 from ninja import NinjaAPI, Router 
  
 
-相关多个的路由多层结构 = NinjaAPI(version='2.0.0')
+相关多个的路由多层结构 = NinjaAPI()
 
 #  /案例模板/ninjaAPI案例/相关多个的路由多层结构/ 
 @相关多个的路由多层结构.get("/")

@@ -1,5 +1,5 @@
 """
-URL configuration for 服务器后端 project.
+URL configuration for fuadmin project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -15,25 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path
 
-
-# from 福平台.公共类.福平台api import 福平台api
-# from 案例模板.路由案例.ninjaAPI案例.Helloworld import HelloWorld
+from .api import api
 
 urlpatterns = [
-    path('admin/', admin.site.urls), 
+    path('admin/', admin.site.urls),
 
-
-    # 路由跳转 文件
-    path('案例模板/', include('案例模板.公共类.案例模板路由分配')), 
-    # path('api/', 福平台api.urls),
-    # path('HelloWorld/', HelloWorld.urls),
-
- 
-    path('', include('案例模板.公共类.案例模板路由分配')), 
+    path('api/', api.urls), 
 
 ]
- 
-
- 
