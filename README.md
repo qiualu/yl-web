@@ -11,8 +11,7 @@ git status
 * <file> 表示单个文件，使用 . 表示所有修改过的文件
 git add <file>
 git add *
-* 提交暂存区的改动到本地仓库，并附上提交信息
-git commit -m '提交信息'
+* 提交暂存区的改动到本地仓库，并附上提交信息  
 * 将本地的改动推送到远程仓库的指定分支
 * <branch-name> 表示分支名，如果不指定则默认推送到当前分支
 git push origin <branch-name> | git push
