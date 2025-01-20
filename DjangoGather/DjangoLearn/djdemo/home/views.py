@@ -8,7 +8,7 @@ from django.http.response import HttpResponse
 from django.views.decorators.http import require_http_methods
 from django.http import QueryDict
 
-
+# http://127.0.0.1:8000/home/index
 # Create your views here.
 def index(request):
     print("index视图运行了")
@@ -56,6 +56,21 @@ def index(request):
 
 
     return HttpResponse("<h1>index</h1>")
+
+
+# 让用户发送POST才能访问的页面
+from django.views.decorators.http import require_http_methods
+
+
+# 需要注释 settings -> 'django.middleware.csrf.CsrfViewMiddleware',
+# http://127.0.0.1:8000/home/login/
+@require_http_methods(["POST"])  # 注意，中括号中的请求方法名务必大写！！！否则无法正常显示
+def login(request):
+
+    print(request.POST.getlist("name"))  # ['xiaoming']
+
+
+    return HttpResponse("登录成功！")
 
 
 

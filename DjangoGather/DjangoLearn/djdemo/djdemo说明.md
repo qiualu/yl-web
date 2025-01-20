@@ -1,6 +1,6 @@
 
 
-
+cd /DjangoGather/DjangoLearn/djdemo
 
 * django-admin快速创建django项目
 django-admin startproject djdemo
@@ -30,7 +30,10 @@ python manage.py createsuperuser
 *库列表
 pip freeze > requirements.txt
 
-
+# 修改日志
+# 数据库迁移生效
+python manage.py makemigrations
+python manage.py migrate
 
 常见的web服务器软件:  nginx，uwsgi，gunicorn，apache，toncat，uvicon。
 
