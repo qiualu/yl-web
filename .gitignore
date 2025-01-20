@@ -1,96 +1,96 @@
-# Python 编译生成的 __pycache__ 目录  
-__pycache__/  
-.idea/  
+# # Python 编译生成的 __pycache__ 目录  
+# __pycache__/  
+# .idea/  
  
-# 临时文件  
-*.py[cod]  
-*.so  
-*.sqlite3
-# 日志文件  
-*.log  
+# # 临时文件  
+# *.py[cod]  
+# *.so  
+# *.sqlite3
+# # 日志文件  
+# *.log  
  
-# 虚拟环境目录  
-venv/  
-myenv/
-DockerFile/
+# # 虚拟环境目录  
+# venv/  
+# myenv/
+# DockerFile/
 
 
 
-# Node.js and npm ignore files
-node_modules/
-npm-debug.log
-yarn-error.log
+# # Node.js and npm ignore files
+# node_modules/
+# npm-debug.log
+# yarn-error.log
 
-# Vue CLI specific
-.DS_Store
-dist/
-build/
+# # Vue CLI specific
+# .DS_Store
+# dist/
+# build/
 
-# Local environment files
-.env.local
-.env.[mode]
-.env.[mode].local
+# # Local environment files
+# .env.local
+# .env.[mode]
+# .env.[mode].local
 
-# Logs and databases
-*.log
-*.sqlite3
+# # Logs and databases
+# *.log
+# *.sqlite3
 
-# Editor directories and files
-.vscode/
-*.suo
-*.ntvs*
-*.sln
-*.csproj
+# # Editor directories and files
+# .vscode/
+# *.suo
+# *.ntvs*
+# *.sln
+# *.csproj
 
-# IDE-specific files such as IntelliJ IDEA, WebStorm, PHPStorm, and Android Studio
-*.iml
-*.iws
-*.idea/
-*.ipr
-*.iws
-*.ixx
-*.iml
-*.idea/workspace.xml
-*.idea/tasks.xml
-*.idea/misc.xml
-*.idea/modules.xml
-*.idea/vcs.xml
+# # IDE-specific files such as IntelliJ IDEA, WebStorm, PHPStorm, and Android Studio
+# *.iml
+# *.iws
+# *.idea/
+# *.ipr
+# *.iws
+# *.ixx
+# *.iml
+# *.idea/workspace.xml
+# *.idea/tasks.xml
+# *.idea/misc.xml
+# *.idea/modules.xml
+# *.idea/vcs.xml
 
-# OS-specific files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# # OS-specific files
+# Thumbs.db
+# ehthumbs.db
+# Desktop.ini
 
-# Dependency directories
-/node_modules/
-/public/lib/
-/bower_components/
+# # Dependency directories
+# /node_modules/
+# /public/lib/
+# /bower_components/
 
-# Build output
-/dist/
-/build/
+# # Build output
+# /dist/
+# /build/
 
-# Development server files
-.nuxt/
-.vite/
+# # Development server files
+# .nuxt/
+# .vite/
 
-# Test output
-/tests/e2e/reports/
-/coverage/
+# # Test output
+# /tests/e2e/reports/
+# /coverage/
 
-# Other files
-*.map
-*.hot-update.json
-*.localstorage
+# # Other files
+# *.map
+# *.hot-update.json
+# *.localstorage
 
-# Custom files and directories you want to ignore
-# Add your custom rules here
+# # Custom files and directories you want to ignore
+# # Add your custom rules here
 
 
 
-# Local environment files
-.env.local
-.env.[mode]
-.env.[mode].local
+# # Local environment files
+# .env.local
+# .env.[mode]
+# .env.[mode].local
 
 
