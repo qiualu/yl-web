@@ -17,9 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('home/', include('home.urls')),
+    # path('home/', include('home.urls')),
+
+    # 修改 home/urls.py 文件：确保在这个文件中有一个 app_name 属性。
+    path('home/', include('home.urls', namespace="home")),  # namespace 是include函数的参数，namespace的值就是提供给reverse使用的
+ 
 
 ]
