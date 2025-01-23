@@ -28,6 +28,11 @@ urlpatterns = [
 
     # 修改 home/urls.py 文件：确保在这个文件中有一个 app_name 属性。
     path('home/', include('home.urls', namespace="home")),  # namespace 是include函数的参数，namespace的值就是提供给reverse使用的
- 
+    
+    path('cookie/', include("mycookie.urls")), # cookie功能学习
+
+    path('sess/', include("sess.urls")), # session功能学习
+
+    path('user/', include("user.urls")), # 路由进阶
 
 ]

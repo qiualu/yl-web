@@ -24,7 +24,7 @@ runserver 0.0.0.0:8088   # 允许其他的操作系统通过IP/域名访问
 * 创建应用  创建子应用
 python manage.py startapp 子应用名称（目录）
 django-admin startapp 子应用名称
-
+python manage.py startapp mycookie
 * 创建超级密码
 python manage.py createsuperuser
 *库列表
@@ -37,7 +37,12 @@ python manage.py migrate
 
 常见的web服务器软件:  nginx，uwsgi，gunicorn，apache，toncat，uvicon。
 
- 
+# app
+home : request 基础
+mycookie :  cookie 相关
+sess : session 相关
+user : 路由进阶的学习
+
 
 # MVT 设计模式
 
@@ -67,6 +72,53 @@ DELETE	删除/废弃
 
 
 
+* 随着项目的运行时间越长，用户量上来了，那么session数据也会不断增加，所以django虽然会自动删除过期的sesssion数据，但是如果用户没有正常注销的情况下，django是不会自动删除的，此时我们可以借助终端命令来进行删除。
+
+python manage.py clearsessions
+
+
+
+
+
+
+base64编码工具函数
+
+
+Base64是网络上最常见的用于传输8Bit字节码的编码方式之一。
+Base64就是一种基于64个可打印字符来表示二进制数据的方法。
+64个可打印编码字符就是小写字母a-z、大写字母A-Z、数字0-9、符号"+"、"/"（再加上作为垫字的"="，实际上是65个字符）
+base64的使用一般无非就是编码和解码：
+	编码是从二进制数据流经过编码处理成base64字符的过程，可用于在HTTP环境下传递较长的标识信息。例如：图片内容
+	解码是从base64字符还原到二进制字节流的过程
+
+在python中，base64是内置常用的标准模块，我们可以直接通过import导入base64模块直接使用。
+
+在javascript中，也内置了base64的相关函数，分别是atob与btoa。
+
+b64demo.py，代码：
+
+
+import json, base64
+​
+if __name__ == '__main__':
+    # 要编码的原始数据
+    data = {"uname":"root","uid":1}
+    print(data)
+    # 先转换成bytes类型数据
+    data_bytes = json.dumps({"uname": "root", "uid": 1}).encode()
+    print(data_bytes)
+    # 编码
+    base_data = base64.b64encode(data_bytes)
+    print(base_data)
+​
+    # 解码
+    str_bytes = b'eyJ1bmFtZSI6ICJyb290IiwgInVpZCI6IDF9'
+    ori_data  = base64.b64decode(str_bytes).decode()
+    # 字符串
+    print(ori_data)
+    # 变回原来的字典
+    data = json.loads(ori_data)
+    print(data)
 
 
 

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'home',
+    'mycookie',
+    
 
 ]
 
@@ -125,3 +127,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+
+# 配置项
+# session核心类
+SESSION_ENGINE = "django.contrib.sessions.backends.file"
+# 保存到文件: django.contrib.sessions.backends.file
+# 保存到数据库: django.contrib.sessions.backends.db    # 需要配置数据库连接
+# 保存到缓存中: django.contrib.sessions.backends.cache # 需要配置缓存连接
+
+# session存储目录[如果不设置,则默认是系统的缓存目录]
+# 3.0以前的django 通过以下代码配置
+# SESSION_FILE_PATH = os.path.join(BASE_DIR, "session")
+# 3.0以后通过以下配置
+SESSION_FILE_PATH = BASE_DIR / "sess/data"   # 路径拼接，如果当前目录不存在，必须手动创建，否则报错
+
+
+
+
+
