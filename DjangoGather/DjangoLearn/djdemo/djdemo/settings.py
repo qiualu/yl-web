@@ -11,38 +11,55 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+ 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR代表了项目一个参考根路径，是当前文件的父级的父级目录路径，主要作用是提供给整个django项目进行路径拼接的。
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 项目中一般我们会使用大写的变量来表示一个常量，所谓常量就是在开发中，用于表示一些固定数据的标记符，这种标记符，在其他语言中是基本语法来的，但是在python中并没有常量，
+# 所以，就有了一些开发者声明一些大写的变量用于充当常量，常量一经定义，不能赋值。
+# 因此，我们作为开发人员，就要遵守这种约定，以后如果希望项目中的一些数据不要被人修改，则可以声明成常量。
+# django中的配置被强制要求一定要大写！！！否则django不识别
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+# 秘钥，      用于提供给加密算法的秘钥
+# 加密：      哈希串/序列串 = 加密算法(原始密码, 秘钥)
+# 验证：      新哈希串 = 加密算法(原始密码, 秘钥)， 新哈希串==哈希串，则表示原始密码正确
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5muhcawu4^po@&w%3gckqkd80ad%t!(myg=!8j)(q@$%ttpa#3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 在线下开发，DEBUG = True，django会基于测试服务器提供静态资源（图片，css，js）的访问，当服务端出错，会显示详尽错误信息
+# 在线上运营，DEBUG = False，django不会基于测试服务器提供静态资源访问，当服务端出错，不会显示任何关于系统的错误信息，仅仅提供错误页面
 DEBUG = True
 
+#设置当前django项目允许客户端通过哪些地址访问到django项目，"*"表示服务端的任意地址
+# ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
+# django注册的子应用列表[用于数据库操作，缓存，日志，admin管理]
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.admin',  # admin站点的子应用
+    'django.contrib.auth',   # django内置的登录认证功能
+    'django.contrib.contenttypes',  # 内容类型管理
+    'django.contrib.sessions',      # session功能
+    'django.contrib.messages',      # 信号、消息功能的实现
+    'django.contrib.staticfiles',   # 静态文件浏览服务
 
     'home',
     'mycookie',
-    
+    'sess',
+    'user',
 
 ]
+
+# 中间件、全局钩子、拦截器
+# 中间件，MIDDLEWARE，就是一个django提供给开发者用于在http请求和响应过程中，进行数据拦截的插件系统/钩子系统
+# 用于进行拦截请求，或者数据格式转换，权限判断
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,12 +71,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# django项目的默认总路由模块
 ROOT_URLCONF = 'djdemo.urls'
 
+# html模板引擎配置
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [], # 模板引擎目录
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,12 +91,13 @@ TEMPLATES = [
     },
 ]
 
+# web应用程序的模块
 WSGI_APPLICATION = 'djdemo.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
+# https://docs.djangoproject.com/zh-hans/4.2/ref/settings/#databases
+# 数据库配置
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -88,7 +108,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
+# 密码验证类
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -119,13 +139,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+# 静态文件的访问url路径
 STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
+# 默认情况下，django中的数据表的主键ID的数据类型 bigint
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
@@ -134,7 +154,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # 配置项
-# session核心类
+# session核心类 
+# session存储引擎核心类
 SESSION_ENGINE = "django.contrib.sessions.backends.file"
 # 保存到文件: django.contrib.sessions.backends.file
 # 保存到数据库: django.contrib.sessions.backends.db    # 需要配置数据库连接
