@@ -36,8 +36,8 @@ SECRET_KEY = 'django-insecure-5muhcawu4^po@&w%3gckqkd80ad%t!(myg=!8j)(q@$%ttpa#3
 DEBUG = True
 
 #设置当前django项目允许客户端通过哪些地址访问到django项目，"*"表示服务端的任意地址
-# ALLOWED_HOSTS = ["*"]
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -50,10 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',      # 信号、消息功能的实现
     'django.contrib.staticfiles',   # 静态文件浏览服务
 
-    'home',
-    'mycookie',
-    'sess',
-    'user',
+    'home', # request 基础
+    'mycookie', # cookie 相关
+    'sess', # session 相关
+    'user', # 路由进阶的学习 子应用的字符串导包路径
+    'tem',  #  模板 开发者创建的子应用，这填写就是子应用的导包路径
 
 ]
 
@@ -74,11 +75,24 @@ MIDDLEWARE = [
 # django项目的默认总路由模块
 ROOT_URLCONF = 'djdemo.urls'
 
+
+# 模板
+# Django框架中内置了web开发领域非常出名的一个DjangoTemplate模板引擎（简称：DTL）。
+# DTL官方文档: https://docs.djangoproject.com/zh-hans/4.2/topics/templates/
+# 要在django框架中使用模板引擎把视图中的数据更好的展示给客户端，需要完成3个步骤：
+# 在项目配置文件settings.py中指定保存模板文件的模板目录。
+# 一般模板目录都是设置在项目根目录或者主应用目录下。
+# 在视图中基于django提供的渲染函数绑定模板文件和需要展示的数据变量
+# 在模板目录下创建对应的模板文件，并根据模板引擎内置的模板语法，填写输出视图传递过来的数据。
+
 # html模板引擎配置
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [], # 模板引擎目录
+        'DIRS': [ # 配置HTML模板文件的存储目录[目录是手动创建，如果目录不存在，则会报错]
+            BASE_DIR / "templates", # 两种都可以
+            # "templates", 
+        ], # 模板引擎目录
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

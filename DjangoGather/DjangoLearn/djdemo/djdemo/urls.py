@@ -35,4 +35,7 @@ urlpatterns = [
 
     path('user/', include("user.urls")), # 路由进阶
 
+    path('tem/', include("tem.urls")), # 模板
+
+
 ]

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#      单行注释#}
+{% comment %}
+    多行注释
+    多行注释
+    多行注释
+{% endcomment %}
+
+<p>num1={{ num1 }}</p>
+<p>num2={{ num2 }}</p>
+<p>name={{ name }}</p>
+<p>data1={{ data1 }}</p>
+<p>data2={{ data2 }}</p>
+<p>data2={{ data2.0}}</p>
+<p>data2={{ data2.3}}</p>
+<p>data3={{ data3 }}</p>
+<p>data3={{ data3.1 }}</p>
+<p>data3={{ data3.3 }}</p>
+<p>data4={{ data4 }}</p>
+<p>data4={{ data4.name }}</p>
+<p>data4={{ data4.age }}</p>
+<p>data5={{ data5 }}</p>
+<p>data5={{ data5.DEBUG }}</p>
+<p>book_list={{ book_list }}</p>
+<p>book_list={{ book_list.1.name }}</p>
+<p>book_list={{ book_list.1.name }}</p>
+{# 如果要在模板中调用一个对象方法的，该方法名不能后面跟着小括号 #}
+<p>{{ time.time }}</p>
+</body>
+</html>
