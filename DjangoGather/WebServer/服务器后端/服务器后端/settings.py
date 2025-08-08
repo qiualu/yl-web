@@ -9,20 +9,18 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import os
-import sys
+import os, sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
- 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vf#&mc4qphp#*d8^*lze892+pkw&lt40v*e*^80u(hm+elk!&4'
+SECRET_KEY = 'django-insecure-+q9u*t%^v(p=v#4xzobyuk%%u6zai1^@pghivo98%6gq49i)cm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -30,8 +28,12 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
- 
-INSTALLED_APPS = [ 
+# Application definition
+
+# 将应用所在的上层目录加入 Python 路径
+sys.path.append(os.path.join(BASE_DIR, '纯数据应用'))
+
+INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,24 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    "案例模板.模型案例.福案例用户"
+    # '纯数据应用.全运会计数项目.apps.全运会计数项目Config',
+    '全运会计数项目',
+
 ]
-
-
-# # 变量设置 
-# # AUTH_USER_MODEL = '福平台.system.Users'
-# AUTH_USER_MODEL = 'system.Users'
-# USERNAME_FIELD = 'username'
-# ALL_MODELS_OBJECTS = []  # 所有app models 对象
-
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -116,17 +110,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
+LANGUAGE_CODE = 'en-us'
 
-# 语言代码
-LANGUAGE_CODE = 'zh-hans'
-# 时区
-TIME_ZONE = "Asia/Shanghai"
-# 是否启用国际化
+TIME_ZONE = 'UTC'
+
 USE_I18N = True
-# 是否使用时区
+
 USE_TZ = True
-
-
 
 
 # Static files (CSS, JavaScript, Images)
@@ -144,95 +134,74 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ----- 日志设置 -----
 
-from .log_utils import UnicodeURLFormatter
+# 从自定义模块导入中文日志格式化器（修正路径，确保和你的文件名完全一致）
+from .路由日志编码 import UnicodeURL日志格式化器  # 关键：去掉多余的"由"字
+
 # 创建日志文件夹路径
-LOG_DIR = os.path.join(BASE_DIR, '公共文件/日志文件')
-# 确保日志文件夹存在，如果不存在则创建
-if not os.path.exists(LOG_DIR):
-    os.makedirs(LOG_DIR)
-# 设置日志文件路径
-LOG_FILE = os.path.join(LOG_DIR, 'django.log')
-# Django 日志配置
-# 日志配置
-LOGGING = {
-    'version': 1,  #使用的python内置的logging模块，那么python可能会对它进行升级，所以需要写一个版本号，目前就是1版本
-    'disable_existing_loggers': False, #是否去掉目前项目中其他地方中以及使用的日志功能，但是将来我们可能会引入第三方的模块，里面可能内置了日志功能，所以尽量不要关闭。
-    'formatters': { #日志记录格式
-        'verbose': { #levelname等级，asctime记录时间，module表示日志发生的文件名称，lineno行号，message错误信息
-            '()': UnicodeURLFormatter,  # 指定自定义的格式化器类路径 处理后在添加到日志中
+日志文件夹 = os.path.join(BASE_DIR, '公共文件/日志文件')
+if not os.path.exists(日志文件夹):
+    os.makedirs(日志文件夹)
+日志文件 = os.path.join(日志文件夹, 'django.log')
+
+# Django 日志配置（基于你原来的可用配置修改，仅调整日志级别）
+日志配置 = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        '详细格式': {
+            '()': UnicodeURL日志格式化器,
             'format': '%(levelname)s %(asctime)s %(module)s %(lineno)d %(message)s'
         },
-        'simple': {
+        '简单格式': {
             'format': '%(levelname)s %(module)s %(lineno)d %(message)s'
         },
-        'unicode_url_formatter': {
+        '中文URL格式': {
+            '()': UnicodeURL日志格式化器,
             'format': '[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s',
             'datefmt': '%Y-%m-%d %H:%M:%S',
-        },
-        'custom_formatter': {
-            '()': UnicodeURLFormatter,  # 指定自定义的格式化器类路径
-            'format': '[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s',
-            'datefmt': '%Y-%m-%d %H:%M:%S',
-        },
+        }
     },
-    'filters': { #过滤器：可以对日志进行输出时的过滤用的
-        'require_debug_true': { #在debug=True下产生的一些日志信息，要不要记录日志，需要的话就在handlers中加上这个过滤器，不需要就不加
+    'filters': {
+        '调试模式启用': {
             '()': 'django.utils.log.RequireDebugTrue',
         },
-        'require_debug_false': { #和上面相反
+        '调试模式禁用': {
             '()': 'django.utils.log.RequireDebugFalse',
-        },
+        }
     },
-    'handlers': { #日志处理方式，日志实例,向哪里输出
-        'console': { #在控制台输出时的实例
-            'level': 'DEBUG', #日志等级；debug是最低等级，那么只要比它高等级的信息都会被记录
-            'filters': ['require_debug_true'], #在debug=True下才会打印在控制台
-            'class': 'logging.StreamHandler', #使用的python的logging模块中的StreamHandler来进行输出
-            # 'formatter': 'simple'
-            # 'formatter': 'unicode_url_formatter'
-            'formatter': 'custom_formatter'
+    'handlers': {
+        '控制台': {
+            # 核心修改：将级别从DEBUG提高到INFO，过滤冗余调试日志
+            'level': 'INFO',  
+            'filters': ['调试模式启用'],
+            'class': 'logging.StreamHandler',
+            'formatter': '中文URL格式'
         },
-        'file': {
+        '文件': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            # 日志位置,日志文件名,日志保存目录必须手动创建
-            'filename': LOG_FILE, #文件应该有读写权限。
-            # 日志文件的最大值,这里我们设置300M
-            'maxBytes': 300 * 1024 * 1024,  # B
-            # 日志文件的数量,设置最大日志数量为10
+            'filename': 日志文件,
+            'maxBytes': 300 * 1024 * 1024,
             'backupCount': 10,
-            # 日志格式:详细格式
-            'formatter': 'verbose',
-            'encoding': 'utf-8',  # 设置默认编码，否则打印出来汉字乱码
-        },
+            'formatter': '详细格式',
+            'encoding': 'utf-8',
+        }
     },
-    # 日志对象
     'loggers': {
-        'django': {  #和django结合起来使用，将django中之前的日志输出内容的时候，按照我们的日志配置进行输出，
-            # 'handlers': ['console', 'file'], #将来项目上线，把console去掉
-            'handlers': ['console'], #将来项目上线，把console去掉  # 没有file 不写入文件
-            'propagate': True, #冒泡：是否将日志信息记录冒泡给其他的日志处理系统，工作中都是True，不然django这个日志系统捕获到日志信息之后，其他模块中可能也有日志记录功能的模块，就获取不到这个日志信息了
+        # 只输出框架内部调试日志，只保留关键日志器
+        'django.server': {  # 只处理HTTP请求日志（包含URL）
+            'handlers': ['控制台', '文件'],
+            'level': 'INFO',
+            'propagate': False  # 避免日志冒泡导致重复输出
         },
+        # 保留你的应用日志器
+        '全运会计数项目': {  # 替换为你的实际应用名
+            'handlers': ['控制台', '文件'],
+            'level': 'INFO',
+            'propagate': False
+        }
     }
 }
-# //http://127.0.0.1:8000/投票应用/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+LOGGING = 日志配置
 

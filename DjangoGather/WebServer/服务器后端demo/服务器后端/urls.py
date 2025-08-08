@@ -15,14 +15,25 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path,include
+
+
+# from 福平台.公共类.福平台api import 福平台api
+# from 案例模板.路由案例.ninjaAPI案例.Helloworld import HelloWorld
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), 
 
-    path('全运会计数/', include('全运会计数项目.urls')), 
-    path('', include('全运会计数项目.urls')),
+
+    # 路由跳转 文件
+    path('案例模板/', include('案例模板.公共类.案例模板路由分配')), 
+    # path('api/', 福平台api.urls),
+    # path('HelloWorld/', HelloWorld.urls),
+
+ 
+    path('', include('案例模板.公共类.案例模板路由分配')), 
+
 ]
+ 
 
-
-
+ 
